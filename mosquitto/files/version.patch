@@ -1,0 +1,28 @@
+diff --git a/src/mosquitto.c b/src/mosquitto.c
+index eaf4395..b7393c4 100644
+--- a/src/mosquitto.c
++++ b/src/mosquitto.c
+@@ -272,7 +272,6 @@ int main(int argc, char *argv[])
+ 	/* Initialise logging only after initialising the database in case we're
+ 	 * logging to topics */
+ 	mqtt3_log_init(&config);
+-	_mosquitto_log_printf(NULL, MOSQ_LOG_INFO, "mosquitto version %s (build date %s) starting", VERSION, TIMESTAMP);
+ 	if(config.config_file){
+ 		_mosquitto_log_printf(NULL, MOSQ_LOG_INFO, "Config loaded from %s.", config.config_file);
+ 	}else{
+@@ -287,7 +286,6 @@ int main(int argc, char *argv[])
+ #ifdef WITH_SYS_TREE
+ 	if(config.sys_interval > 0){
+ 		/* Set static $SYS messages */
+-		snprintf(buf, 1024, "mosquitto version %s", VERSION);
+ 		mqtt3_db_messages_easy_queue(&int_db, NULL, "$SYS/broker/version", 2, strlen(buf), buf, 1);
+ 		snprintf(buf, 1024, "%s", TIMESTAMP);
+ 		mqtt3_db_messages_easy_queue(&int_db, NULL, "$SYS/broker/timestamp", 2, strlen(buf), buf, 1);
+@@ -365,7 +363,6 @@ int main(int argc, char *argv[])
+ 	run = 1;
+ 	rc = mosquitto_main_loop(&int_db, listensock, listensock_count, listener_max);
+ 
+-	_mosquitto_log_printf(NULL, MOSQ_LOG_INFO, "mosquitto version %s terminating", VERSION);
+ 	mqtt3_log_close(&config);
+ 
+ #ifdef WITH_PERSISTENCE

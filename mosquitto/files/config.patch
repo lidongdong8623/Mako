@@ -1,0 +1,22 @@
+diff --git a/config.mk b/config.mk
+index 7dd6f5f..689402e 100644
+--- a/config.mk
++++ b/config.mk
+@@ -58,14 +58,14 @@ WITH_MEMORY_TRACKING:=yes
+ WITH_SYS_TREE:=yes
+ 
+ # Build with SRV lookup support.
+-WITH_SRV:=yes
++WITH_SRV:=no
+ 
+ # Build using libuuid for clientid generation (Linux only - please report if
+ # supported on your platform).
+-WITH_UUID:=yes
++
+ 
+ # Build with websockets support on the broker.
+-WITH_WEBSOCKETS:=no
++WITH_WEBSOCKETS:=yes
+ 
+ # Use elliptic keys in broker
+ WITH_EC:=yes
